@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ironoid.experiment"  >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/MyMaterialTheme" >
+        <activity
+            android:name=".SplashActivity"
+            android:label="Experiment"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+
+        </activity>
+
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".FCNActivity"
+            android:label="@string/title_activity_fcn"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ironoid.experiment.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".CGActivity"
+            android:label="@string/title_activity_cg"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ironoid.experiment.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".PAIActivity"
+            android:label="@string/title_activity_pai"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ironoid.experiment.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".M3Activity"
+            android:label="@string/title_activity_m3"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ironoid.experiment.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".DSFLActivity"
+            android:label="@string/title_activity_dsfl"
+            android:parentActivityName=".HomeActivity"
+            android:theme="@style/MyMaterialTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ironoid.experiment.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ironoid.experiment.HomeActivity" />
+        </activity>
+    </application>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
+
+</manifest>

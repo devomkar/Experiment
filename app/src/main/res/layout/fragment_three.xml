@@ -1,0 +1,87 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.ironoid.experiment.FCNFragments.OneFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center_horizontal|top"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="2015 June"
+                android:id="@+id/jun15"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:textStyle="bold"
+                android:layout_marginBottom="15dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="#ffffff"
+                android:layout_marginTop="25dp" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="2014 December"
+                android:id="@+id/dec14"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="2014 June"
+                android:id="@+id/jun14"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="2013 December"
+                android:id="@+id/dec13"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="15dp"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="2013 June"
+                android:id="@+id/jun13"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="75dp"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

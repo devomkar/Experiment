@@ -1,0 +1,140 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.ironoid.experiment.FCNFragments.OneFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView"
+        android:layout_gravity="center_horizontal|top"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Frequently Asked Questions"
+                android:id="@+id/textView5"
+                android:layout_gravity="center_horizontal"
+                android:textSize="25dp"
+                android:textStyle="bold|italic"
+                android:layout_marginTop="10dp" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1) Question 1 ?"
+                android:id="@+id/q1"
+                android:layout_marginTop="25dp"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:textAlignment="textStart"
+                android:onClick="toast" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2) Question 2 ?"
+                android:id="@+id/q2"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:textAlignment="textStart"
+                android:onClick="toast" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="3) Question  3 ?"
+                android:id="@+id/q3"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:textAlignment="textStart"
+                android:onClick="toast" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="4) Question 4 ?"
+                android:id="@+id/q4"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:onClick="toast"
+                android:textAlignment="textStart" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="5) Question 5 ?"
+                android:id="@+id/q5"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:onClick="toast"
+                android:textAlignment="textStart" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="6) Question 6 ?"
+                android:id="@+id/q6"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:onClick="toast"
+                android:textAlignment="textStart" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="7) Question 7 ?"
+                android:id="@+id/q7"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:onClick="toast"
+                android:textAlignment="textStart" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="8) Question 8 ?"
+                android:id="@+id/q8"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:onClick="toast"
+                android:textAlignment="textStart" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="9) Question 9 ?"
+                android:id="@+id/q9"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:onClick="toast"
+                android:textAlignment="textStart" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="10) Question 10 ?"
+                android:id="@+id/q10"
+                android:layout_gravity="center_horizontal"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:textStyle="bold|italic"
+                android:onClick="toast"
+                android:textAlignment="textStart"
+                android:layout_marginBottom="75dp" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

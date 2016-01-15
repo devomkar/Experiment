@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">Experiment</string>
+    <string name="action_settings">Settings</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_home">Experiment</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_cg">Computer Graphics</string>
+    <string name="title_activity_pai">P.A.I</string>
+    <string name="title_activity_m3">Mathematics-III</string>
+    <string name="title_activity_dsfl">D.S.F</string>
+    <string name="title_activity_fcn">F.C.N</string>
+    <string-array name="array_value">
+        <item>Instagram: omkarshinde7</item>
+        <item>Facebook: Omkar Shinde</item>
+        <item>Whatsapp: +917276899986</item>
+        <item>Hike: +917276899986</item>
+    </string-array>
+    <string name="pref_send_report">Send crash reports</string>
+    <string name="pref_send_report_summary">Helps to fix bugs</string>
+    <string name="pref_sync_frequency">Sync frequency</string>
+    <string name="pref_sync_frequency_summary">Set the sync frequency</string>
+    <string name="pref_user_name">Set username</string>
+    <string name="pref_user_name_summary">Set your username</string>
+
+    <string name="pref_user_profile">User Profile</string>
+    <string name="pref_update_setting">Update Settings</string>
+    <string name="pref_pass">Set Default Password</string>
+    <string name="pref_pass1">Use this option on your own risk.</string>
+    <string name="myfb">My Facebook Profile</string>
+    <string name="myfb2">I will be always there for u friend.</string>
+    <string name="myxda">My xda Profile</string>
+    <string name="myxda2">Click here to visit my xda account</string>
+    <string name="myinsta">My Instagram Account</string>
+    <string name="myinsta2">Share your pic ;-) </string>
+    <string name="mywa">My Whatsapp Account</string>
+    <string name="mywa2">Need any Help ,Drop me a Message.</string>
+    <string name="donate">Donate to Support me</string>
+    <string name="donate2">It helps a lot</string>
+    <string name="help">Help!</string>
+    <string name="about">About the Devloper (Omkar Shinde)</string>
+    <string name="help2">If u need Help.</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="share_body">fhf</string>
+    <string name="a">layout_weight is used in LinearLayouts to assign "importance" to Views within the layout.
+        All Views have a default layout_weight of zero, meaning they take up only as much room on the screen as
+        they need to be displayed. Assigning a value higher than zero will split up the rest of the available space
+        in the parent View, according to the value of each Views layout_weight and its ratio to the overall layout_weight
+        specified in the current layout for this and other View elements.
+        To give an example: lets say we have a text label and two text edit elements in a horizontal row. The label
+        has no layout_weight specified, so it takes up the minimum space required to render. If the layout_weight of each
+        of the two text edit elements is set to 1, the remaining width in the parent layout will be split equally between
+        them (because we claim they are equally important). If the first one has a layout_weight of 1 and the second has a
+        layout_weight of 2, then one third of the remaining space will be given to
+        the first, and two thirds to the second (because we claim the second one is more important).)</string>
+
+
+</resources>

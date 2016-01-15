@@ -1,0 +1,271 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    //Light Theme
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base"> </style>
+    <style name="Green" parent="Green.Base"> </style>
+    <style name="Red" parent="Red.Base"> </style>
+    <style name="Orange" parent="Orange.Base"> </style>
+    <style name="Pink" parent="Pink.Base"> </style>
+    <style name="Purple" parent="Purple.Base"> </style>
+    <style name="Voilet" parent="Voilet.Base"> </style>
+    <style name="Yellow" parent="Yellow.Base"> </style>
+    <style name="Cyan" parent="Cyan.Base"> </style>
+    <style name="Teal" parent="Teal.Base"> </style>
+    <style name="Indigo" parent="Indigo.Base"> </style>
+
+   //Dark Theme
+    <style name="MyMaterialTheme2" parent="MyMaterialTheme2.Base"> </style>
+    <style name="Green2" parent="Green2.Base"> </style>
+    <style name="Red2" parent="Red2.Base"> </style>
+    <style name="Orange2" parent="Orange2.Base"> </style>
+    <style name="Pink2" parent="Pink2.Base"> </style>
+    <style name="Purple2" parent="Purple2.Base"> </style>
+    <style name="Voilet2" parent="Voilet2.Base"> </style>
+    <style name="Yellow2" parent="Yellow2.Base"> </style>
+    <style name="Cyan2" parent="Cyan2.Base"> </style>
+    <style name="Teal2" parent="Teal2.Base"> </style>
+    <style name="Indigo2" parent="Indigo2.Base"> </style>
+
+    <style name="AlertDialog" parent="Theme.AppCompat.NoActionBar">
+
+    </style>
+
+    <style name="DialogAnimationslide">
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+    <style name="DialogAnimationfade">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+    </style>
+
+
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#0296c7</item>
+        <item name="android:textColorPrimary">#2e2c2c</item>
+        <item name="android:background">#ededed</item>
+    </style>
+    <style name="AppCompatAlertDialogStyle2" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#0296c7</item>
+        <item name="android:textColorPrimary">#ededed</item>
+        <item name="android:background">#2e2c2c</item>
+    </style>
+
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Green.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#168e1a</item>
+        <item name="colorPrimaryDark">#0b6111</item>
+        <item name="colorAccent">#388e3c</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Red.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#b3291f</item>
+        <item name="colorPrimaryDark">#730c05</item>
+        <item name="colorAccent">#a3231a</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Orange.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#df6400</item>
+        <item name="colorPrimaryDark">#8e4517</item>
+        <item name="colorAccent">#d16c00</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Pink.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#bf1750</item>
+        <item name="colorPrimaryDark">#8c0e39</item>
+        <item name="colorAccent">#b91b50</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Purple.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#9417a9</item>
+        <item name="colorPrimaryDark">#570864</item>
+        <item name="colorAccent">#931fa7</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Voilet.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#602fb7</item>
+        <item name="colorPrimaryDark">#371378</item>
+        <item name="colorAccent">#673ab7</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Yellow.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#dca90e</item>
+        <item name="colorPrimaryDark">#9b770d</item>
+        <item name="colorAccent">#cf9f0e</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Cyan.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#0ca0b3</item>
+        <item name="colorPrimaryDark">#045e69</item>
+        <item name="colorAccent">#00bcd4</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="Teal.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#009688</item>
+        <item name="colorPrimaryDark">#045e56</item>
+        <item name="colorAccent">#02877b</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+
+    </style>
+
+    <style name="Indigo.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#1d33ac</item>
+        <item name="colorPrimaryDark">#1d2a73</item>
+        <item name="colorAccent">#2a3eab</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle</item>
+    </style>
+
+    <style name="MyMaterialTheme2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Green2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#168e1a</item>
+        <item name="colorPrimaryDark">#0b6111</item>
+        <item name="colorAccent">#388e3c</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Red2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#b3291f</item>
+        <item name="colorPrimaryDark">#730c05</item>
+        <item name="colorAccent">#a3231a</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+
+    <style name="Orange2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#df6400</item>
+        <item name="colorPrimaryDark">#8e4517</item>
+        <item name="colorAccent">#d16c00</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Pink2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#bf1750</item>
+        <item name="colorPrimaryDark">#8c0e39</item>
+        <item name="colorAccent">#b91b50</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Purple2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#9417a9</item>
+        <item name="colorPrimaryDark">#570864</item>
+        <item name="colorAccent">#931fa7</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Voilet2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#602fb7</item>
+        <item name="colorPrimaryDark">#371378</item>
+        <item name="colorAccent">#673ab7</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Yellow2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#dca90e</item>
+        <item name="colorPrimaryDark">#9b770d</item>
+        <item name="colorAccent">#cf9f0e</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Cyan2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#0ca0b3</item>
+        <item name="colorPrimaryDark">#045e69</item>
+        <item name="colorAccent">#00bcd4</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Teal2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#009688</item>
+        <item name="colorPrimaryDark">#045e56</item>
+        <item name="colorAccent">#02877b</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="Indigo2.Base" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">#1d33ac</item>
+        <item name="colorPrimaryDark">#1d2a73</item>
+        <item name="colorAccent">#2a3eab</item>
+        <item name="alertDialogTheme">@style/AppCompatAlertDialogStyle2</item>
+    </style>
+
+    <style name="MyMaterialTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="MyMaterialTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
