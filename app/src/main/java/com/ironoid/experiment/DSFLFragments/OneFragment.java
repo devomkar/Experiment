@@ -66,9 +66,19 @@ public class OneFragment extends Fragment {
         slidefab = AnimationUtils.loadAnimation(getContext(),R.anim.slidefab);
 
         Button b1 = (Button) view.findViewById(R.id.unit1);
+
+        b1.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Snackbar.make(getView(),"This is stacks",Snackbar.LENGTH_LONG).show();
+                return false;
+            }
+        });
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                totalq = 50;
                 final Dialog d = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
                 d.setContentView(R.layout.mcq_dialog);
                 d.getWindow().getAttributes().windowAnimations = R.style.DialogAnimationslide;

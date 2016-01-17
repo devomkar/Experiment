@@ -20,7 +20,7 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Unit I"
+                android:text="Unit I - Stacks"
                 android:id="@+id/unit1"
                 android:layout_marginTop="50dp"
                 style="@style/Base.Widget.AppCompat.Button.Colored"
@@ -33,7 +33,7 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Unit II"
+                android:text="Unit II - Queue"
                 android:id="@+id/unit2"
                 android:layout_gravity="center_horizontal"
                 style="@style/Base.Widget.AppCompat.Button.Colored"
@@ -44,7 +44,7 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Unit III"
+                android:text="Unit III - Tree"
                 android:id="@+id/unit3"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
@@ -55,7 +55,7 @@
             <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Unit IV"
+                android:text="Unit IV - Graphs"
                 android:id="@+id/unit4"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
