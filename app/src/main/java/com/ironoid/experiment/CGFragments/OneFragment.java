@@ -3,7 +3,9 @@ package com.ironoid.experiment.CGFragments;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -65,6 +67,9 @@ public class OneFragment extends Fragment {
         slide5 = AnimationUtils.loadAnimation(getContext(),R.anim.slide5);
         slidefab = AnimationUtils.loadAnimation(getContext(),R.anim.slidefab);
 
+        final SharedPreferences pref = PreferenceManager
+                .getDefaultSharedPreferences(getActivity());
+
         Button b1 = (Button) view.findViewById(R.id.unit1);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,12 +120,13 @@ public class OneFragment extends Fragment {
                 setQuestionView();
                 butNext.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {anim();
+                    public void onClick(View v) {
+                    try{
                         final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
                         final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
 
                         Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
-
+                        anim();
 
                         if (currentQ.getANSWER().equals(answer.getText())) {
                             final Snackbar snackbar = Snackbar
@@ -148,10 +154,14 @@ public class OneFragment extends Fragment {
                         }
 
                         if (qid < totalq) {
-
+                            grp.clearCheck();
                             currentQ = quesList.get(qid);
                             setQuestionView();
                         } else {
+                            if(pref.getInt("cg_unit1_best_score",0) < score)
+                            {
+                                pref.edit().putInt("cg_unit1_best_score", score).apply();
+                            }
                             d.cancel();
                             d.dismiss();
                             final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
@@ -215,6 +225,11 @@ public class OneFragment extends Fragment {
                             });
                             d2.show();
                         }
+                    }
+                    catch (Exception e)
+                    {
+                        Snackbar.make(v,"Select Answer First",Snackbar.LENGTH_SHORT).show();
+                    }
                     }
 
 
@@ -272,12 +287,13 @@ public class OneFragment extends Fragment {
                 setQuestionView();
                 butNext.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {anim();
+                    public void onClick(View v) {
+                    try{
                         final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
                         final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
 
                         Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
-
+                        anim();
 
                         if (currentQ.getANSWER().equals(answer.getText())) {
                             final Snackbar snackbar = Snackbar
@@ -305,10 +321,14 @@ public class OneFragment extends Fragment {
                         }
 
                         if (qid < totalq) {
-
+                            grp.clearCheck();
                             currentQ = quesList.get(qid);
                             setQuestionView();
                         } else {
+                            if(pref.getInt("cg_unit2_best_score",0) < score)
+                            {
+                                pref.edit().putInt("cg_unit2_best_score", score).apply();
+                            }
                             d.cancel();
                             d.dismiss();
                             final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
@@ -371,6 +391,11 @@ public class OneFragment extends Fragment {
                             });
                             d2.show();
                         }
+                    }
+                    catch (Exception e)
+                    {
+                        Snackbar.make(v,"Select Answer First",Snackbar.LENGTH_SHORT).show();
+                    }
                     }
 
 
@@ -429,12 +454,13 @@ public class OneFragment extends Fragment {
                 setQuestionView();
                 butNext.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {anim();
+                    public void onClick(View v) {
+                    try{
                         final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
                         final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
 
                         Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
-
+                        anim();
 
                         if (currentQ.getANSWER().equals(answer.getText())) {
                             final Snackbar snackbar = Snackbar
@@ -462,10 +488,14 @@ public class OneFragment extends Fragment {
                         }
 
                         if (qid < totalq) {
-
+                            grp.clearCheck();
                             currentQ = quesList.get(qid);
                             setQuestionView();
                         } else {
+                            if(pref.getInt("cg_unit3_best_score",0) < score)
+                            {
+                                pref.edit().putInt("cg_unit3_best_score", score).apply();
+                            }
                             d.cancel();
                             d.dismiss();
                             final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
@@ -528,6 +558,11 @@ public class OneFragment extends Fragment {
                             });
                             d2.show();
                         }
+                    }
+                    catch (Exception e)
+                    {
+                        Snackbar.make(v,"Select Answer First",Snackbar.LENGTH_SHORT).show();
+                    }
                     }
 
 
@@ -586,11 +621,13 @@ public class OneFragment extends Fragment {
                 setQuestionView();
                 butNext.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {anim();
+                    public void onClick(View v) {
+                    try{
                         final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
                         final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
 
                         Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
+                        anim();
 
 
                         if (currentQ.getANSWER().equals(answer.getText())) {
@@ -619,10 +656,14 @@ public class OneFragment extends Fragment {
                         }
 
                         if (qid < totalq) {
-
+                            grp.clearCheck();
                             currentQ = quesList.get(qid);
                             setQuestionView();
                         } else {
+                            if(pref.getInt("cg_unit4_best_score",0) < score)
+                            {
+                                pref.edit().putInt("cg_unit4_best_score", score).apply();
+                            }
                             d.cancel();
                             d.dismiss();
                             final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
@@ -685,6 +726,11 @@ public class OneFragment extends Fragment {
                             });
                             d2.show();
                         }
+                    }
+                    catch (Exception e)
+                    {
+                        Snackbar.make(v,"Select Answer First",Snackbar.LENGTH_SHORT).show();
+                    }
                     }
 
 

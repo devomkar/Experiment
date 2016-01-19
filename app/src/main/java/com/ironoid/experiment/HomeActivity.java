@@ -33,10 +33,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -475,9 +477,7 @@ public class HomeActivity extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.exit) {
+     if (id == R.id.exit) {
             AlertDialog.Builder close = new AlertDialog.Builder(this);
 
             close.setTitle("Really Exit ?");
@@ -510,8 +510,11 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-
-        if (id == R.id.about_app) {
+        if(id == R.id.best_scores)
+        {
+            bestscore();
+        }
+        else  if (id == R.id.about_app) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
             alertDialogBuilder.setTitle("Getting Started");
@@ -652,5 +655,32 @@ public class HomeActivity extends AppCompatActivity
     }
 
 
+    public void bestscore()
+    {
+        SharedPreferences p = PreferenceManager.getDefaultSharedPreferences(this);
+
+        final Dialog d = new Dialog(this, android.R.style.Theme_Light_NoTitleBar);
+        d.setContentView(R.layout.high_scores);
+        d.getWindow().getAttributes().windowAnimations = R.style.DialogAnimationslide;
+        ImageView back = (ImageView)d.findViewById(R.id.back_highscore);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                d.dismiss();
+            }
+        });
+        ListView lv = (ListView)d.findViewById(R.id.listView);
+        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Unit I - "+p.getInt("fcn_unit1_best_score",0), "Unit II - "+p.getInt("fcn_unit2_best_score",0), "Unit III - "+p.getInt("fcn_unit3_best_score",0), "Unit IV - "+p.getInt("fcn_unit4_best_score",0)}));
+        ListView lv2 = (ListView)d.findViewById(R.id.listView2);
+        lv2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[] {"Unit I - "+p.getInt("cg_unit1_best_score",0), "Unit II - "+p.getInt("cg_unit2_best_score",0), "Unit III - "+p.getInt("cg_unit3_best_score",0),"Unit IV - "+p.getInt("cg_unit4_best_score",0)}));
+        ListView lv3 = (ListView)d.findViewById(R.id.listView3);
+        lv3.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[] {"Unit I - "+p.getInt("pai_unit1_best_score",0), "Unit II - "+p.getInt("pai_unit2_best_score",0), "Unit III - "+p.getInt("pai_unit3_best_score",0),"Unit IV - "+p.getInt("pai_unit4_best_score",0)}));
+        ListView lv4 = (ListView)d.findViewById(R.id.listView4);
+        lv4.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[] {"Unit I - "+p.getInt("m3_unit1_best_score",0), "Unit II - "+p.getInt("m3_unit2_best_score",0), "Unit III - "+p.getInt("m3_unit3_best_score",0),"Unit IV - "+p.getInt("m3_unit4_best_score",0)}));
+        ListView lv5 = (ListView)d.findViewById(R.id.listView5);
+        lv5.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[] {"Unit I - "+p.getInt("dsf_unit1_best_score",0), "Unit II - "+p.getInt("dsf_unit2_best_score",0), "Unit III - "+p.getInt("dsf_unit3_best_score",0),"Unit IV - "+p.getInt("dsf_unit4_best_score",0)}));
+
+        d.show();
+    }
 
 }

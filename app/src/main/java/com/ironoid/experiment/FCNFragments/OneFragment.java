@@ -3,7 +3,9 @@ package com.ironoid.experiment.FCNFragments;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -64,6 +66,9 @@ public class OneFragment extends Fragment {
         slide5 = AnimationUtils.loadAnimation(getContext(),R.anim.slide5);
         slidefab = AnimationUtils.loadAnimation(getContext(),R.anim.slidefab);
 
+        final SharedPreferences pref = PreferenceManager
+                .getDefaultSharedPreferences(getActivity());
+
         Button b1 = (Button) view.findViewById(R.id.unit1);
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,12 +119,13 @@ public class OneFragment extends Fragment {
                 setQuestionView();
                 butNext.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {anim();
+                    public void onClick(View v) {
+                    try{
                         final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
                         final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
 
                         Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
-
+                        anim();
 
                         if (currentQ.getANSWER().equals(answer.getText())) {
                             final Snackbar snackbar = Snackbar
@@ -147,10 +153,14 @@ public class OneFragment extends Fragment {
                         }
 
                         if (qid < totalq) {
-
+                            grp.clearCheck();
                             currentQ = quesList.get(qid);
                             setQuestionView();
                         } else {
+                            if(pref.getInt("fcn_unit1_best_score",0) < score)
+                            {
+                                pref.edit().putInt("fcn_unit1_best_score", score).apply();
+                            }
                             d.cancel();
                             d.dismiss();
                             final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
@@ -214,6 +224,11 @@ public class OneFragment extends Fragment {
                             });
                             d2.show();
                         }
+                    }
+                    catch (Exception e)
+                    {
+                        Snackbar.make(v,"Select Answer First",Snackbar.LENGTH_SHORT).show();
+                    }
                     }
 
 
@@ -271,12 +286,13 @@ public class OneFragment extends Fragment {
                 setQuestionView();
                 butNext.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {anim();
+                    public void onClick(View v) {
+                   try{
                         final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
                         final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
 
                         Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
-
+                        anim();
 
                         if (currentQ.getANSWER().equals(answer.getText())) {
                             final Snackbar snackbar = Snackbar
@@ -304,10 +320,14 @@ public class OneFragment extends Fragment {
                         }
 
                         if (qid < totalq) {
-
+                            grp.clearCheck();
                             currentQ = quesList.get(qid);
                             setQuestionView();
                         } else {
+                            if(pref.getInt("fcn_unit2_best_score",0) < score)
+                            {
+                                pref.edit().putInt("fcn_unit2_best_score", score).apply();
+                            }
                             d.cancel();
                             d.dismiss();
                             final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
@@ -370,6 +390,11 @@ public class OneFragment extends Fragment {
                             });
                             d2.show();
                         }
+                   }
+                   catch (Exception e)
+                   {
+                       Snackbar.make(v,"Select Answer First",Snackbar.LENGTH_SHORT).show();
+                   }
                     }
 
 
@@ -428,106 +453,113 @@ public class OneFragment extends Fragment {
                 setQuestionView();
                 butNext.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {anim();
-                        final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
-                        final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
+                    public void onClick(View v) {
+                        try {
+                            final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
+                            final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
 
-                        Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
+                            Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
+                            anim();
 
+                            if (currentQ.getANSWER().equals(answer.getText())) {
+                                final Snackbar snackbar = Snackbar
+                                        .make(v, "Awesome Right Answer", Snackbar.LENGTH_LONG);
+                                snackbar.setAction("OK", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        snackbar.dismiss();
+                                    }
+                                });
+                                snackbar.show();
+                                score++;
+                                Log.d("score", "Your score" + score);
+                            } else {
+                                final Snackbar snackbar = Snackbar
+                                        .make(v, "Wrong...The Right Answer is " + currentQ.getANSWER(), Snackbar.LENGTH_INDEFINITE);
+                                snackbar.setAction("OK", new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        snackbar.dismiss();
+                                    }
+                                });
+                                snackbar.show();
 
-                        if (currentQ.getANSWER().equals(answer.getText())) {
-                            final Snackbar snackbar = Snackbar
-                                    .make(v, "Awesome Right Answer", Snackbar.LENGTH_LONG);
-                            snackbar.setAction("OK", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    snackbar.dismiss();
-                                }
-                            });
-                            snackbar.show();
-                            score++;
-                            Log.d("score", "Your score" + score);
-                        } else {
-                            final Snackbar snackbar = Snackbar
-                                    .make(v, "Wrong...The Right Answer is " + currentQ.getANSWER(), Snackbar.LENGTH_INDEFINITE);
-                            snackbar.setAction("OK", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    snackbar.dismiss();
-                                }
-                            });
-                            snackbar.show();
-
-                        }
-
-                        if (qid < totalq) {
-
-                            currentQ = quesList.get(qid);
-                            setQuestionView();
-                        } else {
-                            d.cancel();
-                            d.dismiss();
-                            final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
-                            d2.setContentView(R.layout.mcq_result_dialog);
-                            d2.getWindow().getAttributes().windowAnimations = R.style.DialogAnimationslide;
-                            d2.setCancelable(false);
-                            TextView t = (TextView) d2.findViewById(R.id.score);
-                            TextView t2 = (TextView) d2.findViewById(R.id.quote);
-                            RatingBar ratingBar = (RatingBar) d2.findViewById(R.id.ratingBar);
-                            ImageView back = (ImageView) d2.findViewById(R.id.mcq_result_back);
-                            ImageView home = (ImageView) d2.findViewById(R.id.mcq_result_home);
-                            ImageView share = (ImageView) d2.findViewById(R.id.mcq_result_share);
-                            t.setText("Your Score is " + score + " out of " + qid + ". ");
-                            if (score <= 10) {
-                                t2.setText("You Need to Study Hard");
-                                ratingBar.setRating(1);
-                            } else if (score <= 20) {
-                                t2.setText("You Can Do Better");
-                                ratingBar.setRating(2);
-                            } else if (score <= 30) {
-                                t2.setText("Good...You are going good");
-                                ratingBar.setRating(3);
-                            } else if (score <= 40) {
-                                t2.setText("You Beat 75% of users");
-                                ratingBar.setRating(4);
-                            } else if (score <= 50) {
-                                t2.setText("You are Awesome.You beat 90% of the users");
-                                ratingBar.setRating(5);
                             }
-                            qid = 0;
-                            score = 0;
-                            back.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    d2.dismiss();
-                                    qid = 0;
-                                    score = 0;
+
+                            if (qid < totalq) {
+                                grp.clearCheck();
+                                currentQ = quesList.get(qid);
+                                setQuestionView();
+                            } else {
+                                if (pref.getInt("fcn_unit3_best_score", 0) < score) {
+                                    pref.edit().putInt("fcn_unit3_best_score", score).apply();
                                 }
-                            });
-                            home.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    Intent i = new Intent(getActivity(), HomeActivity.class);
-                                    startActivity(i);
-                                    getActivity().finish();
+                                d.cancel();
+                                d.dismiss();
+                                final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
+                                d2.setContentView(R.layout.mcq_result_dialog);
+                                d2.getWindow().getAttributes().windowAnimations = R.style.DialogAnimationslide;
+                                d2.setCancelable(false);
+                                TextView t = (TextView) d2.findViewById(R.id.score);
+                                TextView t2 = (TextView) d2.findViewById(R.id.quote);
+                                RatingBar ratingBar = (RatingBar) d2.findViewById(R.id.ratingBar);
+                                ImageView back = (ImageView) d2.findViewById(R.id.mcq_result_back);
+                                ImageView home = (ImageView) d2.findViewById(R.id.mcq_result_home);
+                                ImageView share = (ImageView) d2.findViewById(R.id.mcq_result_share);
+                                t.setText("Your Score is " + score + " out of " + qid + ". ");
+                                if (score <= 10) {
+                                    t2.setText("You Need to Study Hard");
+                                    ratingBar.setRating(1);
+                                } else if (score <= 20) {
+                                    t2.setText("You Can Do Better");
+                                    ratingBar.setRating(2);
+                                } else if (score <= 30) {
+                                    t2.setText("Good...You are going good");
+                                    ratingBar.setRating(3);
+                                } else if (score <= 40) {
+                                    t2.setText("You Beat 75% of users");
+                                    ratingBar.setRating(4);
+                                } else if (score <= 50) {
+                                    t2.setText("You are Awesome.You beat 90% of the users");
+                                    ratingBar.setRating(5);
                                 }
-                            });
-                            share.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    String share_body = "Hey , I just Scored " + score + " out of " + qid + " in this wonderful app Experiment\n" +
-                                            "You can study MCQ's and Frequently Asked Questions asked in Online Exam and Viva and Old Question Papers using your Phone.\n" +
-                                            "Just Download the App From Here www.ironoid.blogspot.com";
-                                    Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                                    sharingIntent.setType("text/plain");
-                                    sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Experiment:Where You Learn");
-                                    sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share_body);
-                                    startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                                }
-                            });
-                            d2.show();
+                                qid = 0;
+                                score = 0;
+                                back.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        d2.dismiss();
+                                        qid = 0;
+                                        score = 0;
+                                    }
+                                });
+                                home.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent i = new Intent(getActivity(), HomeActivity.class);
+                                        startActivity(i);
+                                        getActivity().finish();
+                                    }
+                                });
+                                share.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        String share_body = "Hey , I just Scored " + score + " out of " + qid + " in this wonderful app Experiment\n" +
+                                                "You can study MCQ's and Frequently Asked Questions asked in Online Exam and Viva and Old Question Papers using your Phone.\n" +
+                                                "Just Download the App From Here www.ironoid.blogspot.com";
+                                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                                        sharingIntent.setType("text/plain");
+                                        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Experiment:Where You Learn");
+                                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, share_body);
+                                        startActivity(Intent.createChooser(sharingIntent, "Share using"));
+                                    }
+                                });
+                                d2.show();
+                            }
+                        } catch (Exception e) {
+                            Snackbar.make(v, "Select Answer First", Snackbar.LENGTH_SHORT).show();
                         }
-                    }
+                        }
 
 
                 });
@@ -585,11 +617,13 @@ public class OneFragment extends Fragment {
                 setQuestionView();
                 butNext.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View v) {anim();
+                    public void onClick(View v) {
+                     try{
                         final RadioGroup grp = (RadioGroup) d.findViewById(R.id.radioGroup1);
                         final RadioButton answer = (RadioButton) d.findViewById(grp.getCheckedRadioButtonId());
 
                         Log.d("youRans", currentQ.getANSWER() + " " + answer.getText());
+                         anim();
 
 
                         if (currentQ.getANSWER().equals(answer.getText())) {
@@ -618,10 +652,14 @@ public class OneFragment extends Fragment {
                         }
 
                         if (qid < totalq) {
-
+                            grp.clearCheck();
                             currentQ = quesList.get(qid);
                             setQuestionView();
                         } else {
+                            if(pref.getInt("fcn_unit4_best_score",0) < score)
+                            {
+                                pref.edit().putInt("fcn_unit4_best_score", score).apply();
+                            }
                             d.cancel();
                             d.dismiss();
                             final Dialog d2 = new Dialog(getActivity(), android.R.style.Theme_Material_NoActionBar);
@@ -684,6 +722,9 @@ public class OneFragment extends Fragment {
                             });
                             d2.show();
                         }
+                    }catch (Exception e) {
+                         Snackbar.make(v, "Select Answer First", Snackbar.LENGTH_SHORT).show();
+                     }
                     }
 
 
