@@ -3,6 +3,7 @@ package com.ironoid.experiment;
 import android.app.Activity;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -45,8 +46,11 @@ import android.widget.Toast;
 import android.support.v7.app.AlertDialog;
 
 
+import com.koushikdutta.ion.Ion;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -60,10 +64,11 @@ public class HomeActivity extends AppCompatActivity
     public static final String MyPREFERENCES = "MyPrefs" ;
     public static final String Name = "nameKey";
     public static final String Email = "emailKey";
+    private HandleXML obj;
 
 
 
-    Animation slide,slide2,slide3,slide4,slide5,slidefab;
+    Animation slide,slide2,slide3,slide4,slide5,slidefab,rotate;
 
 
 
@@ -185,6 +190,8 @@ public class HomeActivity extends AppCompatActivity
                 R.anim.slide5);
         slidefab = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.slidefab);
+        rotate = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.rotate);
 
       final String picturePath = PreferenceManager.getDefaultSharedPreferences(this).getString("picturePath", "");
         if(!picturePath.equals(""))
@@ -510,6 +517,7 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         if(id == R.id.best_scores)
         {
             bestscore();
@@ -545,27 +553,26 @@ public class HomeActivity extends AppCompatActivity
             return true;
 
         } else if (id == R.id.update) {
-            AlertDialog.Builder close = new AlertDialog.Builder(HomeActivity.this);
+            final Dialog d = new Dialog(HomeActivity.this);
+            d.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            d.setContentView(R.layout.update_dialog);
+            Button yes =(Button)d.findViewById(R.id.vvv);
+            Button no =(Button)d.findViewById(R.id.no);
+            yes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    update();
+                    d.dismiss();
+                }
+            });
+            no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    d.dismiss();
+                }
+            });
+            d.show();
 
-            close.setTitle("UPDATE");
-            close.setMessage("Check if Update available ?");
-            close.setPositiveButton("Yes", new
-                    DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Uri uri = Uri.parse("http://www.ironoid.blogspot.in/?m=1");
-                            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                            startActivity(intent);
-                        }
-                    });
-            ;
-            close.setNegativeButton("No", new
-                    DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                        }
-                    });
-            ;
-            AlertDialog alertDialog = close.create();
-            alertDialog.show();
 
         } else if (id == R.id.devloper) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -670,17 +677,39 @@ public class HomeActivity extends AppCompatActivity
             }
         });
         ListView lv = (ListView)d.findViewById(R.id.listView);
-        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Unit I - "+p.getInt("fcn_unit1_best_score",0), "Unit II - "+p.getInt("fcn_unit2_best_score",0), "Unit III - "+p.getInt("fcn_unit3_best_score",0), "Unit IV - "+p.getInt("fcn_unit4_best_score",0)}));
+        lv.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Unit I - " + p.getInt("fcn_unit1_best_score", 0), "Unit II - " + p.getInt("fcn_unit2_best_score", 0), "Unit III - " + p.getInt("fcn_unit3_best_score", 0), "Unit IV - " + p.getInt("fcn_unit4_best_score", 0)}));
         ListView lv2 = (ListView)d.findViewById(R.id.listView2);
-        lv2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[] {"Unit I - "+p.getInt("cg_unit1_best_score",0), "Unit II - "+p.getInt("cg_unit2_best_score",0), "Unit III - "+p.getInt("cg_unit3_best_score",0),"Unit IV - "+p.getInt("cg_unit4_best_score",0)}));
+        lv2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Unit I - " + p.getInt("cg_unit1_best_score", 0), "Unit II - " + p.getInt("cg_unit2_best_score", 0), "Unit III - " + p.getInt("cg_unit3_best_score", 0), "Unit IV - " + p.getInt("cg_unit4_best_score", 0)}));
         ListView lv3 = (ListView)d.findViewById(R.id.listView3);
-        lv3.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[] {"Unit I - "+p.getInt("pai_unit1_best_score",0), "Unit II - "+p.getInt("pai_unit2_best_score",0), "Unit III - "+p.getInt("pai_unit3_best_score",0),"Unit IV - "+p.getInt("pai_unit4_best_score",0)}));
+        lv3.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Unit I - " + p.getInt("pai_unit1_best_score", 0), "Unit II - " + p.getInt("pai_unit2_best_score", 0), "Unit III - " + p.getInt("pai_unit3_best_score", 0), "Unit IV - " + p.getInt("pai_unit4_best_score", 0)}));
         ListView lv4 = (ListView)d.findViewById(R.id.listView4);
-        lv4.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[] {"Unit I - "+p.getInt("m3_unit1_best_score",0), "Unit II - "+p.getInt("m3_unit2_best_score",0), "Unit III - "+p.getInt("m3_unit3_best_score",0),"Unit IV - "+p.getInt("m3_unit4_best_score",0)}));
+        lv4.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[]{"Unit I - " + p.getInt("m3_unit1_best_score", 0), "Unit II - " + p.getInt("m3_unit2_best_score", 0), "Unit III - " + p.getInt("m3_unit3_best_score", 0), "Unit IV - " + p.getInt("m3_unit4_best_score", 0)}));
         ListView lv5 = (ListView)d.findViewById(R.id.listView5);
         lv5.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new String[] {"Unit I - "+p.getInt("dsf_unit1_best_score",0), "Unit II - "+p.getInt("dsf_unit2_best_score",0), "Unit III - "+p.getInt("dsf_unit3_best_score",0),"Unit IV - "+p.getInt("dsf_unit4_best_score",0)}));
 
         d.show();
     }
+
+public void update(){
+
+            String url = "https://raw.githubusercontent.com/omkar1997/Experiment/master/update.xml";
+
+            obj = new HandleXML(url);
+            obj.fetchXML();
+            while(obj.parsingComplete);
+            String y = obj.getUpdate();
+
+            if(y.equals("yes"))
+            {
+                Toast.makeText(HomeActivity.this, " Update Available", Toast.LENGTH_LONG).show();
+                Uri uri = Uri.parse("https://raw.githubusercontent.com/omkar1997/Experiment/master/Experiment.apk");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+            else {
+                Toast.makeText(HomeActivity.this, "No Update Available", Toast.LENGTH_LONG).show();            }
+
+
+}
 
 }

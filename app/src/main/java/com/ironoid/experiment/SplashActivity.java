@@ -81,7 +81,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
 
-        Animation rotate = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slidefab);
+        Animation rotate = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.trot);
         ImageView logo = (ImageView)findViewById(R.id.splash_logo);
 
 

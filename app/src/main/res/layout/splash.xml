@@ -14,7 +14,7 @@
             android:id="@+id/splash_logo"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/f" />
+            android:src="@drawable/logo" />
 
         <TextView
             android:layout_width="wrap_content"

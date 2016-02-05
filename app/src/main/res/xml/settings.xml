@@ -83,8 +83,9 @@
     <PreferenceCategory android:title="About App">
         <Preference
             android:title="Version"
-            android:summary="Version 1.0"
+            android:summary="1.0"
             android:key="version"
+            android:defaultValue="1.0"
             />
         <Preference
             android:title="Release Date"
