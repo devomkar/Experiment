@@ -8,5 +8,15 @@
         android:fromXDelta="-100%p"
         android:toXDelta="0%p"
         android:duration="500"
-        android:startOffset="500"/>
+        />
+
+    <rotate
+        android:fromDegrees="0"
+        android:toDegrees="360"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:interpolator="@android:anim/cycle_interpolator"
+        android:duration="500"
+        android:startOffset="500"
+        />
 </set>

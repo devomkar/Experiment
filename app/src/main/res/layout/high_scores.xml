@@ -10,25 +10,26 @@
         android:background="@color/colorPrimary">
 
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
             android:id="@+id/back_highscore"
             android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            style="@android:style/Widget.DeviceDefault.Light.ListView" />
+            style="@style/Base.Widget.AppCompat.Toolbar.Button.Navigation"
+            android:layout_alignParentBottom="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="High Scores"
+            android:text="Best Scores"
             android:id="@+id/textView9"
             android:textStyle="bold"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textColor="#ffffff" />
+
     </RelativeLayout>
 
     <ScrollView

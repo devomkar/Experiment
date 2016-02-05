@@ -9,21 +9,40 @@
         android:layout_gravity="center_horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
             android:id="@+id/splash_logo"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/help" />
+            android:src="@drawable/f" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Experiment"
             android:id="@+id/textView4"
+            android:textSize="25dp"
+            android:textColor="#4a6bb1"
             android:layout_below="@+id/splash_logo"
             android:layout_centerHorizontal="true"
-            android:textSize="20dp"
-            android:textColor="#4a6bb1" />
+            android:layout_marginTop="39dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Devloped By:- Omkar Shinde"
+            android:id="@+id/dev_by"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#1c767b"
+            android:layout_marginBottom="15dp" />
     </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/button6"
+        android:layout_gravity="right" />
 </LinearLayout>

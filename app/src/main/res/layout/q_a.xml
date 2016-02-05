@@ -10,7 +10,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/abc_ic_clear_mtrl_alpha" />
+        android:src="@drawable/abc_ic_clear_mtrl_alpha"
+        style="@style/Base.Widget.AppCompat.Toolbar.Button.Navigation" />
 
     <TextView
         android:layout_width="wrap_content"
