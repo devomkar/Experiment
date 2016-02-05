@@ -1,5 +1,2 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<update>
-<available>yes</available>
-<link>http://www.google.com</link>
-</update>
+<?xml version="1.0"?>
+<update value="no" />
