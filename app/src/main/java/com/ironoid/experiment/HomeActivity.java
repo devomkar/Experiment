@@ -698,16 +698,33 @@ public void update(){
             obj.fetchXML();
             while(obj.parsingComplete);
             String y = obj.getUpdate();
+            String cl = obj.getChangelog();
+            String rd = obj.getRel_date();
 
-            if(y.equals("yes"))
+            if(y.equals("bta1"))
             {
-                Toast.makeText(HomeActivity.this, " Update Available", Toast.LENGTH_LONG).show();
-                Uri uri = Uri.parse("https://raw.githubusercontent.com/omkar1997/Experiment/master/Experiment.apk");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                Toast.makeText(HomeActivity.this, "No Update Available", Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(HomeActivity.this, "No Update Available", Toast.LENGTH_LONG).show();            }
+                Toast.makeText(HomeActivity.this, " Update Available", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+                alertDialogBuilder.setTitle("Update Available");
+                alertDialogBuilder.setMessage("Current Version:- 1.0\n\nVersion Available:-" + y + "\n\nChangelog:-" + cl + "\n\nRelease Date:-" + rd);
+                alertDialogBuilder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Uri uri = Uri.parse("https://raw.githubusercontent.com/omkar1997/Experiment/master/Experiment.apk");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+
+                            }
 
 
 }

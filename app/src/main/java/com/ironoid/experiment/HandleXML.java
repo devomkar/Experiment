@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HandleXML {
-    private String update = "update";
+    private String version = "version";
+    private String changelog = "changelog";
+    private String rel_date = "rel_date";
     private String urlString = null;
     private XmlPullParserFactory xmlFactoryObject;
     public volatile boolean parsingComplete = true;
@@ -18,7 +20,13 @@ public class HandleXML {
 
 
     public String getUpdate(){
-        return update;
+        return version;
+    }
+    public String getChangelog(){
+        return changelog;
+    }
+    public String getRel_date(){
+        return rel_date;
     }
 
 
@@ -42,8 +50,10 @@ public class HandleXML {
                         break;
 
                     case XmlPullParser.END_TAG:
-                       if(name.equals("update")){
-                            update = myParser.getAttributeValue(null,"value");
+                       if(name.equals("version")){
+                            version = myParser.getAttributeValue(null,"value");
+                            changelog = myParser.getAttributeValue(null,"changelog");
+                            rel_date = myParser.getAttributeValue(null,"rel_date");
                         }
 
                         break;
