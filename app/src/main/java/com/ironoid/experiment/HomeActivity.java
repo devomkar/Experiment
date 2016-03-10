@@ -14,6 +14,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
@@ -553,25 +554,25 @@ public class HomeActivity extends AppCompatActivity
             return true;
 
         } else if (id == R.id.update) {
-            final Dialog d = new Dialog(HomeActivity.this);
-            d.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            d.setContentView(R.layout.update_dialog);
-            Button yes =(Button)d.findViewById(R.id.vvv);
-            Button no =(Button)d.findViewById(R.id.no);
-            yes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    update();
-                    d.dismiss();
-                }
-            });
-            no.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    d.dismiss();
-                }
-            });
-            d.show();
+            AlertDialog.Builder close = new AlertDialog.Builder(HomeActivity.this);
+
+            close.setTitle("UPDATE");
+            close.setMessage("Check if Update available ?");
+            close.setPositiveButton("Yes", new
+                    DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            new GetUpdate().execute();
+                        }
+                    });
+            ;
+            close.setNegativeButton("No", new
+                    DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+            ;
+            AlertDialog alertDialog = close.create();
+            alertDialog.show();
 
 
         } else if (id == R.id.devloper) {
@@ -728,5 +729,78 @@ public void update(){
 
 
 }
+
+
+
+    private class GetUpdate extends AsyncTask<Void, Void, Void> {
+
+        ProgressDialog pDialog;
+        String y;
+        String cl;
+        String rd;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(HomeActivity.this);
+            pDialog.setMessage("Please wait checking for update....");
+
+            pDialog.show();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+
+            String url = "https://raw.githubusercontent.com/omkar1997/Experiment/master/update.xml";
+
+            obj = new HandleXML(url);
+            obj.fetchXML();
+            while(obj.parsingComplete);
+            y = obj.getUpdate();
+            cl = obj.getChangelog();
+            rd = obj.getRel_date();
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+            /**
+             * Updating parsed JSON data into ListView
+             * */
+
+            if(y.equals("bta1"))
+            {
+                Toast.makeText(HomeActivity.this, "No Update Available", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(HomeActivity.this, " Update Available", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(HomeActivity.this);
+
+                alertDialogBuilder.setTitle("Update Available");
+                alertDialogBuilder.setMessage("Current Version:- 1.0\n\nVersion Available:-" + y + "\n\nChangelog:-" + cl + "\n\nRelease Date:-" + rd);
+                alertDialogBuilder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Uri uri = Uri.parse("https://raw.githubusercontent.com/omkar1997/Experiment/master/Experiment.apk");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+
+            }
+        }
+
+    }
 
 }

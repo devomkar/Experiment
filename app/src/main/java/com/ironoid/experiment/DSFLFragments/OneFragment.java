@@ -198,8 +198,6 @@ public class OneFragment extends Fragment {
                                 t2.setText("You are Awesome.You beat 90% of the users");
                                 ratingBar.setRating(5);
                             }
-                            qid = 0;
-                            score = 0;
                             back.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {

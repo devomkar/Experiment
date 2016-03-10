@@ -1,6 +1,8 @@
 package com.ironoid.experiment;
 
 
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -19,6 +21,8 @@ import android.widget.Toast;
 import com.ironoid.experiment.R;
 
 public class SettingsActivity extends PreferenceActivity {
+
+    HandleXML obj;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -135,9 +139,7 @@ public class SettingsActivity extends PreferenceActivity {
                 close.setPositiveButton("Yes", new
                         DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                Uri uri = Uri.parse("https://www.ironoid.blogspot.in/?m=1");
-                                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                                startActivity(intent);
+                               new GetUpdate().execute();
                             }
                         });
                 ;
@@ -232,6 +234,78 @@ public class SettingsActivity extends PreferenceActivity {
     Intent home = new Intent(SettingsActivity.this,HomeActivity.class);
     startActivity(home);
         finish();
+    }
+
+
+    private class GetUpdate extends AsyncTask<Void, Void, Void> {
+
+        ProgressDialog pDialog;
+        String y;
+        String cl;
+        String rd;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(SettingsActivity.this);
+            pDialog.setMessage("Please wait checking for update....");
+
+            pDialog.show();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+
+            String url = "https://raw.githubusercontent.com/omkar1997/Experiment/master/update.xml";
+
+            obj = new HandleXML(url);
+            obj.fetchXML();
+            while(obj.parsingComplete);
+            y = obj.getUpdate();
+            cl = obj.getChangelog();
+            rd = obj.getRel_date();
+
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+            /**
+             * Updating parsed JSON data into ListView
+             * */
+
+            if(y.equals("bta1"))
+            {
+                Toast.makeText(SettingsActivity.this, "No Update Available", Toast.LENGTH_LONG).show();
+            }
+            else {
+                Toast.makeText(SettingsActivity.this, " Update Available", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SettingsActivity.this);
+
+                alertDialogBuilder.setTitle("Update Available");
+                alertDialogBuilder.setMessage("Current Version:- 1.0\n\nVersion Available:-" + y + "\n\nChangelog:-" + cl + "\n\nRelease Date:-" + rd);
+                alertDialogBuilder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Uri uri = Uri.parse("https://raw.githubusercontent.com/omkar1997/Experiment/master/Experiment.apk");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+
+            }
+        }
+
     }
 
 }
