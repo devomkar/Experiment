@@ -702,7 +702,7 @@ public void update(){
             String cl = obj.getChangelog();
             String rd = obj.getRel_date();
 
-            if(y.equals("bta1"))
+            if(y.equals("beta1"))
             {
                 Toast.makeText(HomeActivity.this, "No Update Available", Toast.LENGTH_LONG).show();
             }
