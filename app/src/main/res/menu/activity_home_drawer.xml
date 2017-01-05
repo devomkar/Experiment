@@ -23,7 +23,7 @@
             android:title="Check for Update" />
     </group>
 
-    <item android:title="Devloper">
+    <item android:title="Developer">
         <menu>
             <item android:id="@+id/devloper"
                 android:icon="@android:drawable/ic_menu_more"

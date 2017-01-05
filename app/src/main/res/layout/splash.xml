@@ -27,11 +27,12 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="39dp" />
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Devloped By:- Omkar Shinde"
+            android:text="Developed By:- Omkar Shinde"
             android:id="@+id/dev_by"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
